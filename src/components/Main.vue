@@ -1,24 +1,35 @@
 <script>
 import CardList from './CardList.vue'
+import { store } from '../store.js'
 
 export default {
   name: "Main",
   components: {
     CardList
-  }
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  props: ["msg"]
 }
 </script>
 
 <template>
   <main>
-
+    <h1>
+      <!-- {{ msg }} -->
+    </h1>
     <section>
       <div class="found">
-        Found 62 characters
+        Found {{ store.infoAPI.count }} characters
       </div>
 
       <CardList />
-
+      <button>
+        Load More
+      </button>
     </section>
 
   </main>
@@ -29,15 +40,16 @@ export default {
 
 main {
   background-color: $primary-color;
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   align-items: flex-end;
 
   section {
     background-color: white;
-    height: 450px;
+    min-height: 450px;
     width: 70%;
+    margin: 50px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -48,8 +60,25 @@ main {
       color: white;
       width: 90%;
       padding: 15px 10px;
+      margin: 20px;
       font-size: 12px;
       font-weight: bold;
+    }
+
+    button {
+      margin: 30px 0;
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      cursor: pointer;
+
+
+      &:hover {
+        background-color: $primary-color;
+        outline: 1px solid $primary-color;
+      }
     }
   }
 }

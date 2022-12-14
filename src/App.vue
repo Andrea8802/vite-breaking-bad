@@ -1,10 +1,17 @@
 <script>
 import Main from './components/Main.vue'
+import { store } from './store.js'
 
 export default {
   name: "App",
   components: {
     Main
+  },
+
+  data() {
+    return {
+      store
+    }
   }
 }
 
@@ -13,7 +20,7 @@ export default {
 <template>
   <header></header>
 
-  <Main />
+  <Main :msg="store.title" />
 
   <footer></footer>
 </template>

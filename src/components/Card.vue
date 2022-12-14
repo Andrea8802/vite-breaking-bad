@@ -1,23 +1,26 @@
 <script>
+
 export default {
     name: "Card",
-
+    props: {
+        infoCard: Object
+    }
 }
 
 </script>
 
 <template>
     <div class="card">
-        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="">
+        <img :src="infoCard.image" alt="">
         <div class="name">
-            Mario
+            {{ infoCard.name }}
         </div>
         <div class="info">
             <div class="status">
-                Dead
+                {{ infoCard.status }}
             </div>
             <div class="species">
-                Human
+                {{ infoCard.species }}
             </div>
         </div>
     </div>
