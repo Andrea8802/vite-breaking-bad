@@ -17,11 +17,17 @@ export default {
 </script>
 
 <template>
+
+  <!-- Parte sopra del main -->
   <section class="top">
+
+    <!-- Titolo e logo -->
     <img src="../assets/img/rickAndMortyLogo.jpg" alt="">
     <h1>
       {{ msg }}
     </h1>
+
+    <!-- Menù select -->
     <select>
       <option>
         Select Category
@@ -31,8 +37,9 @@ export default {
         Coming Soon..
       </option>
     </select>
-
   </section>
+
+  <!-- Parte centrale main -->
   <section class="container">
     <section>
       <div class="found">
@@ -53,6 +60,7 @@ export default {
 @use '../styles/partials/mixins.scss' as *;
 
 
+// Parte sopra main
 .top {
   background-color: $primary-color;
   color: white;
@@ -75,6 +83,7 @@ export default {
 
 }
 
+// Parte centrale main
 .container {
   background-color: $primary-color;
   min-height: calc(100vh - 120px);
