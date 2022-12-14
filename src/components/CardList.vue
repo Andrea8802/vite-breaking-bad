@@ -41,10 +41,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/mixins.scss' as *;
+
 .list {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    @include d-flex (evenly, center);
     flex-wrap: wrap;
     row-gap: 50px;
 }

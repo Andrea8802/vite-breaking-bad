@@ -49,13 +49,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/partials/variables' as *;
+@use '../styles/partials/variables.scss' as *;
+@use '../styles/partials/mixins.scss' as *;
+
 
 .top {
   background-color: $primary-color;
   color: white;
-  display: flex;
-  align-items: center;
+  @include d-flex(start, center);
+
   gap: 10px;
   padding: 10px 0 0 10px;
 
@@ -76,24 +78,22 @@ export default {
 .container {
   background-color: $primary-color;
   min-height: calc(100vh - 120px);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  @include d-flex(center, flex-end);
+
 
   section {
     background-color: white;
     min-height: 450px;
     width: 70%;
     margin: 70px 0 0;
-    display: flex;
+    @include d-flex(evenly, center);
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+
 
     .found {
       background-color: $secondary-color;
       color: white;
-      width: 90%;
+      width: 97%;
       padding: 15px 10px;
       margin: 20px;
       font-size: 14px;
@@ -102,6 +102,7 @@ export default {
 
     button {
       margin: 30px 0;
+      font-size: 18px;
       background-color: $secondary-color;
       color: white;
       border: none;

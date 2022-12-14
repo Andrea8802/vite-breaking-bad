@@ -4,5 +4,5 @@ export const store = reactive({
     characterList: [],
     infoAPI: [],
     apiURL: "https://rickandmortyapi.com/api/character",
-    title: "Ricky e Morty API"
+    title: "Rick e Morty API"
 })
