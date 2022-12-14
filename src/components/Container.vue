@@ -3,13 +3,13 @@ import CardList from './CardList.vue'
 import { store } from '../store.js'
 
 export default {
-  name: "Main",
+  name: "Container",
   components: {
     CardList
   },
   data() {
     return {
-      store
+      store,
     }
   },
   props: ["msg"]
@@ -17,10 +17,23 @@ export default {
 </script>
 
 <template>
-  <main>
+  <section class="top">
+    <img src="../assets/img/rickAndMortyLogo.jpg" alt="">
     <h1>
-      <!-- {{ msg }} -->
+      {{ msg }}
     </h1>
+    <select>
+      <option>
+        Select Category
+      </option>
+
+      <option>
+        Coming Soon..
+      </option>
+    </select>
+
+  </section>
+  <section class="container">
     <section>
       <div class="found">
         Found {{ store.infoAPI.count }} characters
@@ -32,13 +45,35 @@ export default {
       </button>
     </section>
 
-  </main>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
 
-main {
+.top {
+  background-color: $primary-color;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 0 10px;
+
+  img {
+    width: 45px;
+    border-radius: 50%;
+  }
+
+  select {
+    padding: 5px 10px;
+    position: absolute;
+    top: 80px;
+    left: 240px;
+  }
+
+}
+
+.container {
   background-color: $primary-color;
   min-height: calc(100vh - 120px);
   display: flex;
@@ -49,7 +84,7 @@ main {
     background-color: white;
     min-height: 450px;
     width: 70%;
-    margin: 50px 0 0;
+    margin: 70px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -61,7 +96,7 @@ main {
       width: 90%;
       padding: 15px 10px;
       margin: 20px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: bold;
     }
 
@@ -80,6 +115,7 @@ main {
         outline: 1px solid $primary-color;
       }
     }
+
   }
 }
 </style>

@@ -1,11 +1,11 @@
 <script>
-import Main from './components/Main.vue'
+import Container from './components/Container.vue'
 import { store } from './store.js'
 
 export default {
   name: "App",
   components: {
-    Main
+    Container
   },
 
   data() {
@@ -20,7 +20,9 @@ export default {
 <template>
   <header></header>
 
-  <Main :msg="store.title" />
+  <main>
+    <Container :msg="store.title" />
+  </main>
 
   <footer></footer>
 </template>
@@ -34,5 +36,9 @@ footer {
   background-color: $secondary-color;
   height: 60px;
   width: 100%;
+}
+
+main {
+  position: relative;
 }
 </style>
