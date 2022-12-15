@@ -1,11 +1,11 @@
 <script>
-import Container from './components/Container.vue'
+import Main from './components/Main.vue'
 import { store } from './store.js'
 
 export default {
   name: "App",
   components: {
-    Container
+    Main
   },
 
   data() {
@@ -20,9 +20,7 @@ export default {
 <template>
   <header></header>
 
-  <main>
-    <Container :msg="store.title" />
-  </main>
+  <Main :msg="store.title" />
 
   <footer></footer>
 </template>

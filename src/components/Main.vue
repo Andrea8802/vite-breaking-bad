@@ -3,7 +3,7 @@ import CardList from './CardList.vue'
 import { store } from '../store.js'
 
 export default {
-  name: "Container",
+  name: "Main",
   components: {
     CardList
   },
@@ -17,42 +17,45 @@ export default {
 </script>
 
 <template>
+  <main>
 
-  <!-- Parte sopra del main -->
-  <section class="top">
+    <!-- Parte sopra del main -->
+    <section class="top">
 
-    <!-- Titolo e logo -->
-    <img src="../assets/img/rickAndMortyLogo.jpg" alt="">
-    <h1>
-      {{ msg }}
-    </h1>
+      <!-- Titolo e logo -->
+      <img src="../assets/img/rickAndMortyLogo.jpg" alt="">
+      <h1>
+        {{ msg }}
+      </h1>
 
-    <!-- Menù select -->
-    <select>
-      <option>
-        Select Category
-      </option>
+      <!-- Menù select -->
+      <select>
+        <option>
+          Select Category
+        </option>
 
-      <option>
-        Coming Soon..
-      </option>
-    </select>
-  </section>
-
-  <!-- Parte centrale main -->
-  <section class="container">
-    <section>
-      <div class="found">
-        Found {{ store.infoAPI.count }} characters
-      </div>
-
-      <CardList />
-      <button>
-        Load More
-      </button>
+        <option>
+          Coming Soon..
+        </option>
+      </select>
     </section>
 
-  </section>
+    <!-- Parte centrale main -->
+    <section class="container">
+      <section>
+        <div class="found">
+          Found {{ store.infoAPI.count }} characters
+        </div>
+
+        <CardList />
+
+        <button>
+          Load More
+        </button>
+      </section>
+    </section>
+
+  </main>
 </template>
 
 <style lang="scss" scoped>
