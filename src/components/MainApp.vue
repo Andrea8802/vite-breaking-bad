@@ -1,7 +1,6 @@
 <script>
 import CardList from './CardList.vue'
 import { store } from '../store.js'
-import axios from 'axios';
 import SelectorCharacters from './SelectorCharacters.vue';
 
 export default {
@@ -17,27 +16,11 @@ export default {
     }
   },
 
-  methods: {
-    charactersSelected() {
-      axios
-        .get(`${store.apiURL}${store.valueSelected}`)
-        .then(res => {
-          store.characterList = res.data.results
-          store.infoAPI = res.data.info
-        })
-        .catch(err => {
-          console.log("Errore: ", err);
-        })
+  props: {
+    msg: String,
+    charactersFunction: Function
 
-
-    },
-  },
-
-  mounted() {
-    this.charactersSelected();
-  },
-
-  props: ["msg"]
+  }
 
 }
 </script>
@@ -54,7 +37,7 @@ export default {
         {{ msg }}
       </h1>
 
-      <SelectorCharacters @selected="charactersSelected" />
+      <SelectorCharacters @selected="charactersFunction" />
     </section>
 
     <!-- Parte centrale main -->

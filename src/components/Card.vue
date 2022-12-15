@@ -5,6 +5,7 @@ export default {
     props: {
         infoCard: Object
     }
+
 }
 
 </script>

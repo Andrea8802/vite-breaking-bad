@@ -1,94 +1,130 @@
 <script>
 export default {
     name: "LoadingPage",
-    data() {
-        return {
-
-        }
-    },
 }
 </script>
 
 <template>
-    <div class="container-bar">
+    <div class="container-loading">
         <h1 class="text">
-            Caricamento in corso..
+            Caricamento in corso...
         </h1>
-        <div class="bar"></div>
-    </div>
+        <div class="loadingio-spinner-gear-f0mtz7bp0po">
+            <div class="ldio-v1wmmbvxu7">
+                <div>
+                    <div>
 
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/partials/variables' as *;
+@use '../styles/partials/_mixins.scss' as *;
+@use '../styles/partials/_variables.scss' as *;
 
-.container-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.container-loading {
     height: 100vh;
     width: 100%;
-
-    .bar {
-        width: 100%;
-        height: 20px;
-        background-color: $primary-color;
-        animation: loading 3.2s linear;
-    }
+    @include d-flex (center, center);
+    flex-direction: column;
 
     .text {
-        animation: loadingText 3s linear;
-        text-align: center;
+        color: $secondary-color;
         font-size: 40px;
     }
 }
 
-
-
-@keyframes loading {
+@keyframes ldio-v1wmmbvxu7 {
     0% {
-        width: 0%;
-    }
-
-    25% {
-        width: 20%;
+        transform: rotate(0deg)
     }
 
     50% {
-        width: 50%;
-        height: 20px;
-    }
-
-    80% {
-        width: 70%;
-        height: 50vh;
-        opacity: 1;
+        transform: rotate(22.5deg)
     }
 
     100% {
-        width: 100%;
-        height: 100vh;
-        opacity: 0.4;
+        transform: rotate(45deg)
     }
 }
 
-@keyframes loadingText {
-    0% {
-        opacity: 1
-    }
+.ldio-v1wmmbvxu7>div {
+    transform-origin: 100px 100px;
+    animation: ldio-v1wmmbvxu7 0.2s infinite linear;
+}
 
-    5% {
-        opacity: 1;
-    }
+.ldio-v1wmmbvxu7>div div {
+    position: absolute;
+    width: 22px;
+    height: 152px;
+    background: $primary-color;
+    left: 100px;
+    top: 100px;
+    transform: translate(-50%, -50%);
+}
 
-    60% {
-        opacity: 0;
-    }
+.ldio-v1wmmbvxu7>div div:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
 
-    100% {
-        opacity: 0;
-    }
+.ldio-v1wmmbvxu7>div div:nth-child(6) {
+    width: 80px;
+    height: 80px;
+    background: #f1f2f3;
+    border-radius: 50%;
+}
 
+.ldio-v1wmmbvxu7>div div:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(45deg)
+}
+
+.ldio-v1wmmbvxu7>div div:nth-child(4) {
+    transform: translate(-50%, -50%) rotate(90deg)
+}
+
+.ldio-v1wmmbvxu7>div div:nth-child(5) {
+    transform: translate(-50%, -50%) rotate(135deg)
+}
+
+.loadingio-spinner-gear-f0mtz7bp0po {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+}
+
+.ldio-v1wmmbvxu7 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+}
+
+.ldio-v1wmmbvxu7 div {
+    box-sizing: content-box;
 }
 </style>

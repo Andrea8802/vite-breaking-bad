@@ -2,6 +2,7 @@
 import MainApp from './components/MainApp.vue'
 import LoadingPage from './components/LoadingPage.vue'
 import { store } from './store.js'
+import axios from 'axios';
 
 export default {
   name: "App",
@@ -16,11 +17,29 @@ export default {
       inLoading: true
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.inLoading = false;
+  methods: {
+    charactersSelected() {
+      axios
+        .get(`${store.apiURL}${store.valueSelected}`)
+        .then(res => {
+          store.characterList = res.data.results
 
-    }, 3000)
+          store.infoAPI = res.data.info
+
+        })
+        .catch(err => {
+          console.log("Errore: ", err);
+        })
+        .finally(() => {
+          this.inLoading = false
+        })
+
+    },
+
+  },
+
+  mounted() {
+    this.charactersSelected();
   }
 }
 
@@ -32,7 +51,7 @@ export default {
   <div v-else="">
     <header></header>
 
-    <MainApp :msg="store.title" />
+    <MainApp :charactersFunction="charactersSelected()" :msg="store.title" />
 
     <footer></footer>
   </div>
