@@ -1,18 +1,44 @@
 <script>
 import CardList from './CardList.vue'
 import { store } from '../store.js'
+import axios from 'axios';
+import SelectorCharacters from './SelectorCharacters.vue';
 
 export default {
-  name: "Main",
+  name: "MainApp",
   components: {
-    CardList
+    CardList,
+    SelectorCharacters
   },
+
   data() {
     return {
-      store,
+      store
     }
   },
+
+  methods: {
+    charactersSelected() {
+      axios
+        .get(`${store.apiURL}${store.valueSelected}`)
+        .then(res => {
+          store.characterList = res.data.results
+          store.infoAPI = res.data.info
+        })
+        .catch(err => {
+          console.log("Errore: ", err);
+        })
+
+
+    },
+  },
+
+  mounted() {
+    this.charactersSelected();
+  },
+
   props: ["msg"]
+
 }
 </script>
 
@@ -28,16 +54,7 @@ export default {
         {{ msg }}
       </h1>
 
-      <!-- Menù select -->
-      <select>
-        <option>
-          Select Category
-        </option>
-
-        <option>
-          Coming Soon..
-        </option>
-      </select>
+      <SelectorCharacters @selected="charactersSelected" />
     </section>
 
     <!-- Parte centrale main -->
@@ -68,20 +85,12 @@ export default {
   background-color: $primary-color;
   color: white;
   @include d-flex(start, center);
-
   gap: 10px;
   padding: 10px 0 0 10px;
 
   img {
     width: 45px;
     border-radius: 50%;
-  }
-
-  select {
-    padding: 5px 10px;
-    position: absolute;
-    top: 80px;
-    left: 240px;
   }
 
 }

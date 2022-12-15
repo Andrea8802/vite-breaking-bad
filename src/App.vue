@@ -1,11 +1,11 @@
 <script>
-import Main from './components/Main.vue'
+import MainApp from './components/MainApp.vue'
 import { store } from './store.js'
 
 export default {
   name: "App",
   components: {
-    Main
+    MainApp
   },
 
   data() {
@@ -20,7 +20,7 @@ export default {
 <template>
   <header></header>
 
-  <Main :msg="store.title" />
+  <MainApp :msg="store.title" />
 
   <footer></footer>
 </template>

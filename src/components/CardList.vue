@@ -1,7 +1,6 @@
 <script>
 import Card from './Card.vue'
 import { store } from '../store.js'
-import axios from 'axios';
 
 export default {
     name: "CardList",
@@ -12,24 +11,6 @@ export default {
         return {
             store
         }
-    },
-    methods: {
-        getAPI() {
-            axios
-                .get(store.apiURL)
-                .then(res => {
-                    store.characterList = res.data.results
-                    store.infoAPI = res.data.info
-                })
-                .catch(err => {
-                    console.log("Errore: ", err);
-                })
-        }
-
-    },
-    mounted() {
-        this.getAPI();
-
     }
 }
 </script>
