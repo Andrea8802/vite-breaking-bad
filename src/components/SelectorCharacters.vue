@@ -4,12 +4,12 @@ export default {
     name: "SelectorCharacters",
     data() {
         return {
-            optionChioice: ""
+            chosenOption: ""
         }
     },
     methods: {
         changed() {
-            store.valueSelected = `?status=${this.optionChioice}`;
+            store.valueSelected = `?status=${this.chosenOption}`;
         }
     }
 }
@@ -18,28 +18,43 @@ export default {
 
 <template>
 
-    <select v-model="optionChioice" @change="changed(), $emit('selected')">
+    <div class="container-status">
+        <label for="status">
+            Status:
+        </label>
 
-        <option value="Alive">
-            Alive
-        </option>
+        <select id="status" v-model="chosenOption" @change="changed(), $emit('selected')">
 
-        <option value="Dead">
-            Dead
-        </option>
+            <option value="">
+                Tutti
+            </option>
 
-        <option value="unknow">
-            Unknow
-        </option>
-    </select>
+            <option value="Alive">
+                Alive
+            </option>
+
+            <option value="Dead">
+                Dead
+            </option>
+
+            <option value="unknow">
+                Unknow
+            </option>
+        </select>
+    </div>
 
 </template>
 
 <style lang="scss" scoped>
-select {
-    padding: 5px 10px;
+.container-status {
     position: absolute;
     top: 80px;
     left: 240px;
+
+    select {
+
+        padding: 5px 10px;
+
+    }
 }
 </style>

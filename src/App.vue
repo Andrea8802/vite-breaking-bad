@@ -1,28 +1,42 @@
 <script>
 import MainApp from './components/MainApp.vue'
+import LoadingPage from './components/LoadingPage.vue'
 import { store } from './store.js'
 
 export default {
   name: "App",
   components: {
-    MainApp
+    MainApp,
+    LoadingPage
   },
 
   data() {
     return {
-      store
+      store,
+      inLoading: true
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.inLoading = false;
+
+    }, 3000)
   }
 }
 
 </script>
 
 <template>
-  <header></header>
+  <LoadingPage v-if="inLoading" />
 
-  <MainApp :msg="store.title" />
+  <div v-else="">
+    <header></header>
 
-  <footer></footer>
+    <MainApp :msg="store.title" />
+
+    <footer></footer>
+  </div>
+
 </template>
 
 <style lang="scss">
