@@ -2,12 +2,14 @@
 import CardList from './CardList.vue'
 import { store } from '../store.js'
 import SelectorCharacters from './SelectorCharacters.vue';
+import FoundCharacters from './FoundCharacters.vue';
 
 export default {
   name: "MainApp",
   components: {
     CardList,
-    SelectorCharacters
+    SelectorCharacters,
+    FoundCharacters
   },
 
   data() {
@@ -43,9 +45,9 @@ export default {
     <!-- Parte centrale main -->
     <section class="container">
       <section>
-        <div class="found">
-          Found {{ store.infoAPI.count }} characters
-        </div>
+
+
+        <FoundCharacters />
 
         <CardList />
 
@@ -75,7 +77,6 @@ export default {
     width: 45px;
     border-radius: 50%;
   }
-
 }
 
 // Parte centrale main
@@ -92,17 +93,6 @@ export default {
     margin: 70px 0 0;
     @include d-flex(evenly, center);
     flex-direction: column;
-
-
-    .found {
-      background-color: $secondary-color;
-      color: white;
-      width: 97%;
-      padding: 15px 10px;
-      margin: 20px;
-      font-size: 14px;
-      font-weight: bold;
-    }
 
     button {
       margin: 30px 0;
