@@ -14,7 +14,8 @@ export default {
   data() {
     return {
       store,
-      inLoading: true
+      inLoading: true,
+      errorLoading: false
     }
   },
   methods: {
@@ -23,15 +24,20 @@ export default {
         .get(`${store.apiURL}${store.valueSelected}`)
         .then(res => {
           store.characterList = res.data.results
-
           store.infoAPI = res.data.info
+
 
         })
         .catch(err => {
           console.log("Errore: ", err);
+          this.errorLoading = true
+
         })
         .finally(() => {
-          this.inLoading = false
+          if (!this.errorLoading) {
+            this.inLoading = false
+          }
+
         })
 
     },

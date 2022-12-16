@@ -52,7 +52,6 @@ export default {
     left: 240px;
 
     select {
-
         padding: 5px 10px;
 
     }
